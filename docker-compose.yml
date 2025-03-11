@@ -96,7 +96,7 @@ services:
       - tock_https_env=false
       - botadminverticle_body_limit=-1
     ports:
-      - "80:8080"
+      - "8089:8080"
 
   nlp_api:
     image: "tock/nlp_api:${TAG}"
@@ -113,7 +113,7 @@ services:
       - tock_web_use_default_cors_handler_with_credentials=false
       - tock_web_use_default_cors_handler_url=*
     ports:
-      - "8888:8080"
+      - "8080"
 
 volumes:
   tockmongo:
