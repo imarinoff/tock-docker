@@ -73,7 +73,7 @@ services:
 #      - tock_service_log_level=info
 #      - tock_database_log_level=warn
     expose:
-      - "8080"
+      - "8085"
 
   kotlin_compiler:
     image: "tock/kotlin_compiler:${TAG}"
@@ -84,7 +84,7 @@ services:
 #      - tock_service_log_level=info
 #      - tock_database_log_level=warn
     expose:
-      - "8080"
+      - "8085"
 
   admin_web:
     image: "tock/bot_admin:${TAG}"
@@ -96,11 +96,11 @@ services:
       - kotlin_compiler
     environment:
       - tock_mongo_url=mongodb://mongo:27017,mongo2:27018,mongo3:27019/?replicaSet=tock
-      - nlp_duckling_url=http://duckling:8080
+      - nlp_duckling_url=http://duckling:8085
       - tock_env=prod
-      - tock_bot_admin_rest_default_base_url=http://bot_api:8080
-      - tock_bot_compiler_service_url=http://kotlin_compiler:8080
-      - tock_configuration_bot_default_base_url=http://bot_api:8080
+      - tock_bot_admin_rest_default_base_url=http://bot_api:8085
+      - tock_bot_compiler_service_url=http://kotlin_compiler:8085
+      - tock_configuration_bot_default_base_url=http://bot_api:8085
       #remove this in production
       - tock_https_env=false
       - botadminverticle_body_limit=-1
@@ -108,7 +108,7 @@ services:
 #      - tock_service_log_level=info
 #      - tock_database_log_level=warn
     ports:
-      - "80:8080"
+      - "80:8085"
 
   nlp_api:
     image: "tock/nlp_api:${TAG}"
@@ -119,7 +119,7 @@ services:
       - duckling
     environment:
       - tock_mongo_url=mongodb://mongo:27017,mongo2:27018,mongo3:27019/?replicaSet=tock
-      - nlp_duckling_url=http://duckling:8080
+      - nlp_duckling_url=http://duckling:8085
       - tock_env=prod
       - tock_web_use_default_cors_handler=true
       - tock_web_use_default_cors_handler_with_credentials=false
@@ -128,7 +128,7 @@ services:
 #      - tock_service_log_level=info
 #      - tock_database_log_level=warn
     ports:
-      - "8888:8080"
+      - "8888:8085"
 
   bot_api:
     image: "tock/bot_api:${TAG}"
@@ -139,14 +139,14 @@ services:
       - nlp_api
     environment:
       - tock_mongo_url=mongodb://mongo:27017,mongo2:27018,mongo3:27019/?replicaSet=tock
-      - tock_nlp_service_url=http://nlp_api:8080
+      - tock_nlp_service_url=http://nlp_api:8085
       - tock_env=integ
       - tock_websocket_enabled=true
 #      - tock_default_log_level=warn
 #      - tock_service_log_level=info
 #      - tock_database_log_level=warn
     ports:
-      - "8080:8080"
+      - "8085:8085"
 
 volumes:
   tockmongo:
