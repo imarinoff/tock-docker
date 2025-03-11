@@ -108,7 +108,7 @@ services:
 #      - tock_service_log_level=info
 #      - tock_database_log_level=warn
     ports:
-      - "80:8085"
+      - "8089:8085"
 
   nlp_api:
     image: "tock/nlp_api:${TAG}"
@@ -128,7 +128,7 @@ services:
 #      - tock_service_log_level=info
 #      - tock_database_log_level=warn
     ports:
-      - "8888:8085"
+      - "8889:8085"
 
   bot_api:
     image: "tock/bot_api:${TAG}"
