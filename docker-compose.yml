@@ -113,7 +113,7 @@ services:
       - tock_web_use_default_cors_handler_with_credentials=false
       - tock_web_use_default_cors_handler_url=*
     ports:
-      - "8080"
+      - "8888:8080"
 
 volumes:
   tockmongo:
